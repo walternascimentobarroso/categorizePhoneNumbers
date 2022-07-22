@@ -21,7 +21,7 @@ class Connection
   {
     try {
       if ($this->pdo == null) {
-        $this->pdo = new \PDO("sqlite:" . Config::DB_HOST);
+        $this->pdo = new \PDO("sqlite:../db/sample-3.db");
       }
       return $this->pdo;
     } catch (PDOException $e) {

@@ -1,3 +1,11 @@
+<?php
+
+require "../vendor/autoload.php";
+
+use App\Connection;
+
+$data = (new Connection())->getAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,11 +67,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
+          <?php foreach ($data as $row): ?>
+              <tr>
+
+                  <td><?= $row["id"] ?></td>
+                  <td><?= $row["phone"] ?></td>
+                  <td><?= $row["id"] ?></td>
+              </tr>
+          <?php endforeach; ?>
           </tbody>
         </table>
       </div>

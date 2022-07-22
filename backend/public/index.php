@@ -44,10 +44,13 @@ $data = (new Connection())->getAll();
             <input
               class="form-control me-2"
               type="search"
+              name="search"
+              id="search"
               placeholder="Search"
               aria-label="Search"
+              onkeyup="myFunction()"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-success" type="button">
               Search
             </button>
           </form>
@@ -66,7 +69,7 @@ $data = (new Connection())->getAll();
               <th scope="col">Valid</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table">
           <?php foreach ($data as $row): ?>
               <tr>
 
@@ -91,5 +94,26 @@ $data = (new Connection())->getAll();
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
   </body>
 </html>

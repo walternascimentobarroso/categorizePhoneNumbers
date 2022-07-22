@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo](api.png)
+![Logo](view.png)
 
 # Title
 

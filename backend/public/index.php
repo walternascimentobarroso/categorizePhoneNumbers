@@ -72,7 +72,13 @@ $data = (new Connection())->getAll();
 
                   <td><?= $row["id"] ?></td>
                   <td><?= $row["phone"] ?></td>
-                  <td><?= $row["id"] ?></td>
+                  <td>
+                  <div class="alert alert-<?= $row["valid"]
+                    ? "success"
+                    : "danger" ?>" role="alert">
+                    <?= $row["valid"] ? "Yes" : "No" ?>
+                  </div>
+                  </td>
               </tr>
           <?php endforeach; ?>
           </tbody>

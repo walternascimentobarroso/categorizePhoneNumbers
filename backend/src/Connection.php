@@ -37,9 +37,19 @@ class Connection
     while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
       $data[$i]["id"] = $row["id"];
       $data[$i]["phone"] = $row["phone"];
+      $data[$i]["valid"] = $this->phoneValidate($row["phone"]);
       $i++;
     }
 
     return $data;
+  }
+
+  function phoneValidate($phone)
+  {
+    $pattern = "/9[1236][0-9]{7}|2[1-9][0-9]{7}/";
+    if (preg_match($pattern, $phone) == false) {
+      return false;
+    }
+    return true;
   }
 }
